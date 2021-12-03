@@ -21,8 +21,8 @@ cabal_build() (
     --user \
     --enable-deterministic \
     --enable-relocatable \
-    --extra-include-dirs="$INSTALL/myclib" \
-    --extra-lib-dirs="$INSTALL/myclib" \
+    --extra-include-dirs="$(realpath --relative-to="$PWD" "$INSTALL/myclib")" \
+    --extra-lib-dirs="$(realpath --relative-to="$PWD" "$INSTALL/myclib")" \
     --prefix="$INSTALL/mypackage" \
     --package-db="$INSTALL/package.conf.d"
   runghc Setup.hs build
